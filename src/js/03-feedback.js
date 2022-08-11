@@ -18,7 +18,7 @@ form.addEventListener('submit', onSubmitMessage);
 // functions //
 
 function onSubmitMessage(e) {
-  e.preventDefault();
+  // e.preventDefault();
   if (!storageObject.email || !storageObject.message) {
     return alert('all fields');
   }
@@ -34,16 +34,16 @@ function onInputEmail(e) {
 function saveMessage(e) {
   const messageToDom = localStorage.getItem(FEEDBACK_KEY);
   const parsedMessage = JSON.parse(messageToDom);
-  console.log(parsedMessage);
   if (parsedMessage) {
-        if (parsedMessage.email) {
-          email.value = parsedMessage.email;
-        }
-        if (parsedMessage.message) {
-          message.value = parsedMessage.message;
-        }
+    if (parsedMessage.email) {
+      email.value = parsedMessage.email;
+      storageObject.email = parsedMessage.email;
+    }
+    if (parsedMessage.message) {
+      message.value = parsedMessage.message;
+      storageObject.message = parsedMessage.message;
+    }
   }
 }
-  
 
 saveMessage();
